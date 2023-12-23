@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% extends 'indexx.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="table-responsive pt-3">
+                  <table class="table table-striped project-orders-table">
+                    <thead>
+                      <tr>
+
+                        <th>Full Name</th>
+                        <th>Contact Number</th>
+                        <th>Email id</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Suggestion</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+
+                      <tr>
+                        <td>{{i.fullname}}</td>
+                        <td>{{i.contactnumber}}</td>
+                        <td>
+                          {{i.email}}
+                        </td>
+                        <td>{{i.state}}</td>
+                        <td>{{i.city}}</td>
+                        <td>{{i.suggestion}}</td>
+
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <form action="{% url 'delete_contact_suggestion' dataid=i.id %}">
+                              <button type="submit" class="btn btn-danger btn-sm btn-icon-text">
+                              Delete
+                              <i class="typcn typcn-delete-outline btn-icon-append"></i>
+                            </button></form>
+                          </div>
+                        </td>
+                      </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+                  </table>
+                </div>
+
+</body>
+</html>
+{% endblock %}
